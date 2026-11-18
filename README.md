@@ -74,7 +74,7 @@ start, label edge at the end.
 ## Install
 
 ```bash
-omarchy plugin add https://github.com/gooozmen/omarchy-music.git --enable
+omarchy plugin add https://github.com/gooozmen/music-vinyl-player.git --enable
 ```
 
 Needs: `pipewire` (`pw-record`, `pw-play`, `wpctl`), `jq`, and `cc` (gcc) to
