@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "gooozmen.music",
+  "name": "Music",
+  "version": "0.2.0",
+  "author": "gooozmen",
+  "description": "Now-playing widget with a scratchable vinyl record",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Music",
+    "description": "Play/next in the bar; right click for a vinyl card you can scratch",
+    "category": "Media",
+    "allowMultiple": false,
+    "defaultSection": "left"
+  }
+}
