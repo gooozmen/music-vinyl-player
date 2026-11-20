@@ -81,7 +81,9 @@ BarWidget {
     return m + ":" + (s < 10 ? "0" : "") + s
   }
 
-  readonly property bool shown: hasMedia || lockedPlayer !== null
+  // Always on the bar, so it is there after a reboot before any player
+  // has started; the buttons just dim until something plays.
+  readonly property bool shown: true
   visible: shown
   implicitWidth: shown ? row.implicitWidth : 0
   implicitHeight: barSize
@@ -135,8 +137,9 @@ BarWidget {
       // Playing: a little equalizer that turns into pause on hover.
       readonly property bool showEq: root.isPlaying && !tooltipHovered
       text: root.isPlaying ? "󰏤" : "󰐊"
+      dimmed: !root.player
       iconComponent: showEq ? eqComponent : null
-      tooltipText: root.title + (root.artist ? " — " + root.artist : "") + "  [" + root.playerName(root.player) + "]"
+      tooltipText: !root.player ? "Ничего не играет" : root.title + (root.artist ? " — " + root.artist : "") + "  [" + root.playerName(root.player) + "]"
       onPressed: function(b) { root.barPress(b, "playPause") }
       onWheelMoved: function(d) { root.act(d > 0 ? "previous" : "next") }
     }
@@ -245,7 +248,7 @@ BarWidget {
 
         Text {
           textFormat: Text.PlainText
-          text: root.title
+          text: root.title !== "" ? root.title : "Ничего не играет"
           width: parent.width
           elide: Text.ElideRight
           horizontalAlignment: Text.AlignHCenter
