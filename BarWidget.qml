@@ -27,7 +27,9 @@ BarWidget {
     return null
   }
   readonly property var player: {
-    if (lockedPlayer) return lockedPlayer
+    // A chosen source is strict: if it isn't running, show nothing rather
+    // than another app's track.
+    if (sourceKey !== "") return lockedPlayer
     var fallback = null
     for (var i = 0; i < players.length; i++) {
       var p = players[i]
