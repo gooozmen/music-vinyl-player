@@ -229,6 +229,13 @@ BarWidget {
         }
         onChanged: function(v) { root.setSource(v) }
 
+        // The card is only faded out, never destroyed, so an open list would
+        // still be open the next time the card appears.
+        Connections {
+          target: root
+          function onPopupOpenChanged() { if (!root.popupOpen) sourcePicker.close() }
+        }
+
         // Dropdown assigns `value` itself on select, which would break a plain
         // `value: root.sourceKey` binding and leave the label stale.
         Binding {
