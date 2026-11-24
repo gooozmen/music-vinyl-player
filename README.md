@@ -83,3 +83,7 @@ build the engine on first run — all present on a stock Omarchy install with
 of scratching.
 
 If the widget doesn't show up after a change: `omarchy restart shell`.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
