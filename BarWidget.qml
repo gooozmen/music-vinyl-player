@@ -227,8 +227,15 @@ BarWidget {
           }
           return opts
         }
-        value: root.sourceKey
         onChanged: function(v) { root.setSource(v) }
+
+        // Dropdown assigns `value` itself on select, which would break a plain
+        // `value: root.sourceKey` binding and leave the label stale.
+        Binding {
+          target: sourcePicker
+          property: "value"
+          value: root.sourceKey
+        }
       }
 
       // Spinning record — drag it to scratch through the track

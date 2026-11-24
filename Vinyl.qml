@@ -209,7 +209,7 @@ Item {
         id: art
         anchors.fill: parent
         crop: true
-        url: vinyl.artUrl
+        url: vinyl.player ? vinyl.artUrl : ""
         visible: false
         layer.enabled: true
       }
@@ -228,7 +228,7 @@ Item {
         maskSource: artMask
         maskThresholdMin: 0.5
         maskSpreadAtMin: 1.0
-        visible: vinyl.artUrl !== ""
+        visible: !!vinyl.player && vinyl.artUrl !== ""
       }
 
       // Spindle hole
